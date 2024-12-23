@@ -9,13 +9,10 @@ APP_ICON = "🤖"
 MODELOS = ['llama-3.1-8b-instant', 'gemma2-9b-it', 'llama-3.3-70b-versatile']
 
 
-
 async def main():
     st.set_page_config(page_title=APP_TITLE, page_icon=APP_ICON,
                        layout='centered', menu_items={})
-    
 
-    
     with st.sidebar:
         st.header(f"{APP_ICON} {APP_TITLE} {APP_ICON}", divider='blue')
         """Aplicación basada en un agente RAG, que sirve como guía de estudio y
@@ -41,6 +38,7 @@ async def main():
                 con las materias del máster en [Big Data y Ciencia de Datos.](https://www.masteruambigdata.com/)"""
             }
         ]
+
     if 'chat_engine' not in st.session_state.keys():
         st.session_state.chat_engine = 'hola'
     
@@ -52,12 +50,9 @@ async def main():
     if user_query:
         st.session_state.messages.append({"role": "user", "content": user_query})
 
-    
-
     for mensage in st.session_state.messages:
         with st.chat_message(mensage["role"]):
             st.write(mensage["content"])
-            # print(st.write(mensage["content"]))
 
     if st.session_state.messages[-1]['role'] != 'assistant':
         with st.chat_message('assistant'):
