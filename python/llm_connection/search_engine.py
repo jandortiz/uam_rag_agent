@@ -1,9 +1,7 @@
 # Módulo que implementa las funciones necesarias para poner en ejecución el
 # LLM.
 
-import os
-from dotenv import load_dotenv
-load_dotenv()
+import streamlit as st
 
 from pymongo import MongoClient
 
@@ -26,7 +24,7 @@ def get_embedding(query: str) -> list:
         cadena de texto ingresada.
 
     """
-    login(token=os.getenv('HF_TOKEN'))
+    login(token=st.secrets['huggingface_conn']['HF_TOKEN'])
     embedding_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en")
     embedded_query = embedding_model.get_text_embedding(query)
     
@@ -46,7 +44,7 @@ def get_resultados_query(query:str) -> list:
         argumento.
 
     """
-    uri = os.getenv('MONGO_URI')
+    uri = st.secrets['mongodb']['MONGO_URI']
     cliente_mongodb = MongoClient(uri, timeoutMS=60000, socketTimeoutMS=60000)
     coleccion = cliente_mongodb['tfm-master-uam']['materias-master']
 
@@ -85,7 +83,7 @@ def llm_chat_engine(query: str, modelo: str):
     Yields:
         str: texto de respuesta ofrecido por el LLM.
     """
-    api_key = os.getenv('GROQ_API_KEY')
+    api_key = st.secrets['groq_conn']['GROQ_API_KEY']
     documento_contexto = get_resultados_query(query)
     contexto = ' '.join(documento['text'] for documento in documento_contexto)
 
