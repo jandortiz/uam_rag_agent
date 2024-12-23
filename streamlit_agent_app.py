@@ -1,3 +1,5 @@
+# Módulo que contiene el front del RAG.
+
 import asyncio
 import streamlit as st
 
