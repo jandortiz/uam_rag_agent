@@ -60,8 +60,8 @@ async def main():
         with st.chat_message('assistant'):
             response_stream = llm_chat_engine(user_query, modelo_a_usar)
             st.write_stream(response_stream)
-        # mensaje = {"role": "assistant", "content": response_stream}
-            st.session_state.messages.append({"role": "assistant", "content": response_stream})
+            mensaje = {"role": "assistant", "content": response_stream}
+            st.session_state.messages.append(mensaje)
 
 
 if __name__ == "__main__":
