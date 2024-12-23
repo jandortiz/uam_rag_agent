@@ -32,7 +32,6 @@ async def main():
                 options=MODELOS,
                 placeholder='Selecciona una opción'
                 )
-            print(modelo_a_usar)
 
     if 'messages' not in st.session_state.keys():
         st.session_state.messages = [
