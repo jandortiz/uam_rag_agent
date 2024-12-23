@@ -6,6 +6,7 @@ from python.llm_connection.search_engine import llm_chat_engine
 
 APP_TITLE = "Asistente virtual"
 APP_ICON = "🤖"
+MODELOS = ['llama-3.1-8b-instant', 'gemma2-9b-it', 'llama-3.3-70b-versatile']
 
 
 
@@ -28,7 +29,7 @@ async def main():
             label=":material/settings: Configuración", use_container_width=True):
             modelo_a_usar = st.selectbox(
                 label='Modelo a usar',
-                options=['llama-3.1-8b-instant', 'gemma2-9b-it', 'llama-3.3-70b-versatile'],
+                options=MODELOS,
                 placeholder='Selecciona una opción'
                 )
             print(modelo_a_usar)
