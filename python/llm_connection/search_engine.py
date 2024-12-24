@@ -93,12 +93,13 @@ def llm_chat_engine(query: str, modelo: str):
     Pregunta: {query}
     """
 
-    mensaje = [ChatMessage(role='assistant', content=prompt)]
+    mensaje = [{"role":'assistant', "content":prompt}]
     
-    llm = Groq(model=modelo, api_key=api_key)
-    respuesta_llm = llm.stream_chat(mensaje)
+    llm = Groq(api_key=api_key)
+
+    respuesta_llm = llm.chat.completions.create(
+        model=modelo, messages=mensaje, stream=True)
 
     for chunk in respuesta_llm:
-        contenido = chunk.delta
-        if contenido:
-            yield contenido
+        if chunk.choices[0].delta.content:
+            yield chunk.choices[0].delta.content
