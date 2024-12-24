@@ -10,6 +10,18 @@ APP_TITLE = "Asistente virtual"
 APP_ICON = "🤖"
 MODELOS = ['llama-3.1-8b-instant', 'gemma2-9b-it', 'llama-3.3-70b-versatile']
 
+def get_messages():
+    if 'messages' not in st.session_state:
+        st.session_state.messages = [
+            {
+                "role": "assistant",
+                "content": """Te puedo ayudar con cualquier duda relacionada
+                con las materias del máster en [Big Data y Ciencia de Datos.]
+                (https://www.masteruambigdata.com/)"""
+            }
+        ]
+    return st.session_state.messages
+
 
 async def main():
     st.set_page_config(page_title=APP_TITLE, page_icon=APP_ICON,
@@ -32,36 +44,24 @@ async def main():
                 placeholder='Selecciona una opción'
                 )
 
-    if 'messages' not in st.session_state.keys():
-        st.session_state.messages = [
-            {
-                "role": "assistant",
-                "content": """Te puedo ayudar con cualquier duda relacionada
-                con las materias del máster en [Big Data y Ciencia de Datos.](https://www.masteruambigdata.com/)"""
-            }
-        ]
+    st.session_state.messages = get_messages()
 
-    if 'chat_engine' not in st.session_state.keys():
-        st.session_state.chat_engine = 'hola'
-    
-    # if user_query := st.chat_input(
-    #     placeholder='Pregúntame algo'
-    #     ): st.session_state.messages.append({"role": "user", "content": user_query})
+    with st.container():
+        for mensage in st.session_state.messages:
+            with st.chat_message(mensage["role"]):
+                st.write(mensage["content"])
 
     user_query = st.chat_input(placeholder='Pregúntame algo')
+
     if user_query:
-        st.session_state.messages.append({"role": "user", "content": user_query})
+        st.chat_message('user').markdown(user_query)
+        st.session_state.messages.append({'role':'user', 'content':user_query})
 
-    for mensage in st.session_state.messages:
-        with st.chat_message(mensage["role"]):
-            st.write(mensage["content"])
-
-    if st.session_state.messages[-1]['role'] != 'assistant':
-        with st.chat_message('assistant'):
+        with st.chat_message('assistant', avatar='assistant'):
             response_stream = llm_chat_engine(user_query, modelo_a_usar)
-            st.write_stream(response_stream)
-            mensaje = {"role": "assistant", "content": response_stream}
-            st.session_state.messages.append(mensaje)
+            guardar_respuesta = st.write_stream(response_stream)
+        st.session_state.messages.append(
+            {"role": "assistant", "content": guardar_respuesta})
 
 
 if __name__ == "__main__":
