@@ -36,6 +36,7 @@ def cargar_datos_a_mongodb(uri: str):
         loader = SimpleDirectoryReader(
             input_dir=bucket_name, fs=s3_fs, recursive=True, filename_as_id=True)
         datos = loader.load_data()
+        
         atlas_vector_store = MongoDBAtlasVectorSearch(
             mongodb_client=cliente_mongodb,
             db_name='tfm-master-uam',
