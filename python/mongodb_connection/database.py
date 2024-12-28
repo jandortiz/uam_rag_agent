@@ -65,7 +65,7 @@ def cargar_datos_a_mongodb(uri: str) -> VectorStoreIndex:
         print(e)
 
 if __name__=='__main__':
-    uri = os.getenv('MONGO_URI')
+    uri = st.secrets['mongodb']['MONGO_URI']
     cargar_datos_a_mongodb(uri=uri)
 
 
