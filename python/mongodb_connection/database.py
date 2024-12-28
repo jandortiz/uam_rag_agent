@@ -1,5 +1,4 @@
-# Librerías Python.
-import os
+# Módulo para realizar conexión y carga de datos a MongoDB.
 
 from pymongo import MongoClient
 
