@@ -10,7 +10,10 @@ APP_TITLE = "Asistente virtual"
 APP_ICON = "🤖"
 MODELOS = ['llama-3.1-8b-instant', 'gemma2-9b-it', 'llama-3.3-70b-versatile']
 
-def get_messages():
+def get_messages() -> st.SessionStateProxy:
+    """Crea el mensaje inicial en la sesión de Streamlit.
+
+    """
     if 'messages' not in st.session_state:
         st.session_state.messages = [
             {
