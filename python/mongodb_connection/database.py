@@ -33,7 +33,7 @@ def cargar_datos_a_mongodb(uri: str) -> VectorStoreIndex:
 
     # Se crea el cliente y conecta  con la colección.
     cliente_mongodb = MongoClient(uri, timeoutMS=60000, socketTimeoutMS=60000)
-    bucket_name = 'tfm-data-pdf/data'
+    bucket_name = st.secrets['s3_bucket']['BUCKET_NAME']
     
     try:
         login(token=st.secrets['huggingface_conn']['HF_TOKEN'])
