@@ -4,13 +4,12 @@ import os
 import boto3
 
 import streamlit as st
+
 def cargar_archivos_s3() -> None:
     """Toma los archivos indicados en el path local y los sube al bucket de S3
     previamente creado.
 
     """
-
-
     bucket_name = st.secrets['s3_bucket']['BUCKET_NAME']
 
     # TODO: Encontrar la forma de subir archivos que previamente no se han
