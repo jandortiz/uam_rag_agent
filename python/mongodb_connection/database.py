@@ -15,7 +15,7 @@ import streamlit as st
 
 from huggingface_hub import login
 
-embedding_name = st.secrets['HF_embeddings']['HF_EMBEDDING']
+embedding_name = st.secrets['hf_embeddings']['HF_EMBEDDING']
 Settings.embed_model = HuggingFaceEmbedding(model_name=embedding_name)
 
 
