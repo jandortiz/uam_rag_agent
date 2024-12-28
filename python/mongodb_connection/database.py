@@ -33,14 +33,14 @@ def cargar_datos_a_mongodb(uri: str) -> VectorStoreIndex:
 
     # Se crea el cliente y conecta  con la colección.
     cliente_mongodb = MongoClient(uri, timeoutMS=60000, socketTimeoutMS=60000)
-    bucket_name = st.secrets['s3_bucket']['BUCKET_NAME']
+    data_bucket_name = st.secrets['s3_bucket']['DATA_BUCKET_NAME']
     
     try:
         login(token=st.secrets['huggingface_conn']['HF_TOKEN'])
         s3_fs = S3FileSystem()
 
         loader = SimpleDirectoryReader(
-            input_dir=bucket_name, fs=s3_fs, recursive=True,
+            input_dir=data_bucket_name, fs=s3_fs, recursive=True,
             filename_as_id=True)
         
         datos = loader.load_data()
