@@ -25,7 +25,8 @@ def get_embedding(query: str) -> list:
 
     """
     login(token=st.secrets['huggingface_conn']['HF_TOKEN'])
-    embedding_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en")
+    embedding_name = st.secrets['hf_embeddings']['HF_EMBEDDING']
+    embedding_model = HuggingFaceEmbedding(model_name=embedding_name)
     embedded_query = embedding_model.get_text_embedding(query)
     
     return embedded_query
