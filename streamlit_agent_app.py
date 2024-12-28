@@ -10,6 +10,7 @@ APP_TITLE = "Asistente virtual"
 APP_ICON = "🤖"
 MODELOS = ['llama-3.1-8b-instant', 'gemma2-9b-it', 'llama-3.3-70b-versatile']
 
+
 def get_messages() -> st.SessionStateProxy:
     """Crea el mensaje inicial en la sesión de Streamlit.
 
@@ -27,6 +28,9 @@ def get_messages() -> st.SessionStateProxy:
 
 
 async def main():
+    """Crea la lógica del front.
+    
+    """
     st.set_page_config(page_title=APP_TITLE, page_icon=APP_ICON,
                        layout='centered', menu_items={})
 
