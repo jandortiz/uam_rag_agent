@@ -21,7 +21,7 @@ Settings.embed_model = HuggingFaceEmbedding(model_name=embedding_name)
 
 
 @st.cache_resource
-def cargar_datos_a_mongodb(uri: str):
+def cargar_datos_a_mongodb(uri: str) -> VectorStoreIndex:
     """Lee, procesa, indexa y carga la información relacionada con los pdf's a
     MongoDB.
 
