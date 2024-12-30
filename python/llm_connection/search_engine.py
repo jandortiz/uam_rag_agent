@@ -11,12 +11,13 @@ from groq import Groq
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 
-def obtener_embedding(query: str) -> list:
+def obtener_embedding(pregunta_usuario: str) -> list:
     """Crea la representación vectorial de una cadena de texto.
     Por defecto, usa el modelo BAAI/bge-small-en.
 
     Args:
-        query: cadena de texto usada para crear su correspondiente embedimiento
+        pregunta_usuario: cadena de texto usada para crear su correspondiente
+        embedimiento.
     
     Returns:
         Lista de números que corresponden a la representación vectorial de la 
@@ -24,11 +25,11 @@ def obtener_embedding(query: str) -> list:
 
     """
     login(token=st.secrets['huggingface_conn']['HF_TOKEN'])
-    embedding_name = st.secrets['hf_embeddings']['HF_EMBEDDING']
-    embedding_model = HuggingFaceEmbedding(model_name=embedding_name)
-    embedded_query = embedding_model.get_text_embedding(query)
+    nombre_embedding = st.secrets['hf_embeddings']['HF_EMBEDDING']
+    modelo_embedding = HuggingFaceEmbedding(model_name=nombre_embedding)
+    pregunta_embebida = modelo_embedding.get_text_embedding(pregunta_usuario)
     
-    return embedded_query
+    return pregunta_embebida
 
 
 def get_resultados_query(query:str) -> list:
