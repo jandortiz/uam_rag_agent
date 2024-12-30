@@ -32,13 +32,13 @@ def obtener_embedding(pregunta_usuario: str) -> list:
     return pregunta_embebida
 
 
-def get_resultados_query(query:str) -> list:
+def obtener_resultados_pregunta(pregunta_usuario:str) -> list:
     """Realiza una búsqueda del texto que más se relaciona con el argumento.
     Dicha búsqueda la realiza en MongoDB y retorna los 10 mejores resultados.
 
     Args:
-        query: cadena de texto correspondiente a la pregunta hecha por el
-        usuario.
+        pregunta_usuario: cadena de texto correspondiente a la pregunta hecha
+        por el usuario.
 
     Returns:
         Lista con el texto más próximo a la cadena de texto pasada como
@@ -49,13 +49,13 @@ def get_resultados_query(query:str) -> list:
     cliente_mongodb = MongoClient(uri, timeoutMS=60000, socketTimeoutMS=60000)
     coleccion = cliente_mongodb['tfm-master-uam']['materias-master']
 
-    embedded_query = obtener_embedding(query)
+    pregunta_embebida = obtener_embedding(pregunta_usuario)
 
     pipeline = [
         {
             "$vectorSearch": {
                 "index": "pdf-search",
-                "queryVector": embedded_query,
+                "queryVector": pregunta_embebida,
                 "path": "embedding",
                 "exact": True,
                 "limit": 10
@@ -85,7 +85,7 @@ def llm_chat_engine(query: str, modelo: str):
         str: texto de respuesta ofrecido por el LLM.
     """
     api_key = st.secrets['groq_conn']['GROQ_API_KEY']
-    documento_contexto = get_resultados_query(query)
+    documento_contexto = obtener_resultados_pregunta(query)
     contexto = ' '.join(documento['text'] for documento in documento_contexto)
 
     prompt = f""" Use la siguiente información de contexto para responder la
