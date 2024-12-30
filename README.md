@@ -14,3 +14,5 @@ En esta primera versión, se responderán preguntas relacionadas con las materia
 8. Bases de datos NoSQL.
 
 Este proyecto se realiza como requisito para obpar al título de máster en BigData y ciencia de datos.
+
+Para ensayar la app, visite el siguiente [link](https://uamragagent.streamlit.app/)
