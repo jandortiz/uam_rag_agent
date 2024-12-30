@@ -73,25 +73,25 @@ def obtener_resultados_pregunta(pregunta_usuario:str) -> list:
     return resultado_final
 
 
-def llm_chat_engine(query: str, modelo: str):
+def llm_chat_engine(pregunta_usuario: str, modelo: str):
     """
 
     Args:
-        query: cadena de texto correspondiente a la pregunta hecha por el
-        usuario.
+        pregunta_usuario: cadena de texto correspondiente a la pregunta hecha
+        por el usuario.
         modelo: cadena de texto que representa el nombre del LLM a usar.
     
     Yields:
         str: texto de respuesta ofrecido por el LLM.
     """
     api_key = st.secrets['groq_conn']['GROQ_API_KEY']
-    documento_contexto = obtener_resultados_pregunta(query)
+    documento_contexto = obtener_resultados_pregunta(pregunta_usuario)
     contexto = ' '.join(documento['text'] for documento in documento_contexto)
 
     prompt = f""" Use la siguiente información de contexto para responder la
     pregunta realizada al final.
     {contexto}
-    Pregunta: {query}
+    Pregunta: {pregunta_usuario}
     """
 
     mensaje = [{"role":'assistant', "content":prompt}]
@@ -101,6 +101,6 @@ def llm_chat_engine(query: str, modelo: str):
     respuesta_llm = llm.chat.completions.create(
         model=modelo, messages=mensaje, stream=True)
 
-    for chunk in respuesta_llm:
-        if chunk.choices[0].delta.content:
-            yield chunk.choices[0].delta.content
+    for respuesta_parcial in respuesta_llm:
+        if respuesta_parcial.choices[0].delta.content:
+            yield respuesta_parcial.choices[0].delta.content
