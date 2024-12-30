@@ -12,7 +12,7 @@ MODELOS = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant',
            'mixtral-8x7b-32768']
 
 
-def get_messages() -> None:
+def obtener_mensajes() -> None:
     """Crea el mensaje inicial en la sesión de Streamlit.
 
     """
@@ -52,7 +52,7 @@ async def main():
                 placeholder='Selecciona una opción'
                 )
 
-    st.session_state.messages = get_messages()
+    st.session_state.messages = obtener_mensajes()
 
     with st.container():
         for mensage in st.session_state.messages:
