@@ -15,4 +15,4 @@ En esta primera versión, se responderán preguntas relacionadas con las materia
 
 Este proyecto se realiza como requisito para obpar al título de máster en BigData y ciencia de datos.
 
-Para ensayar la app, visite el siguiente [link](https://uamragagent.streamlit.app/){:target="_blank"}
+Para ensayar la app, visite el siguiente <a href="https://uamragagent.streamlit.app/" target=_blank>link.</a>
