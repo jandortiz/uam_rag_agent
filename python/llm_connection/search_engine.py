@@ -8,7 +8,6 @@ from pymongo import MongoClient
 from huggingface_hub import login
 
 from groq import Groq
-from llama_index.core.llms import ChatMessage
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 
