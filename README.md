@@ -1,11 +1,11 @@
 # UAM RAG: un primer acercamiento
-RAG que permite responder preguntas relacionadas con las materias [máster en Big Data y Ciencia de Datos](https://www.masteruambigdata.com/) de la Universidad Autónoma de Madrid.
+RAG que permite responder preguntas relacionadas con las materias  del [máster en Big Data y Ciencia de Datos](https://www.masteruambigdata.com/) de la Universidad Autónoma de Madrid.
 
 
 En esta primera versión, se responderán preguntas relacionadas con las materias:
 
 1. Ciclo de vida analítico del dato.
-2. Intraestructura para BigData.
+2. Infraestructura para BigData.
 3. Estadística.
 4. Ecosistema Spark.
 5. Análisis de datos.
