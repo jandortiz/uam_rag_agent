@@ -12,7 +12,7 @@ from llama_index.core.llms import ChatMessage
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 
-def get_embedding(query: str) -> list:
+def obtener_embedding(query: str) -> list:
     """Crea la representación vectorial de una cadena de texto.
     Por defecto, usa el modelo BAAI/bge-small-en.
 
@@ -49,7 +49,7 @@ def get_resultados_query(query:str) -> list:
     cliente_mongodb = MongoClient(uri, timeoutMS=60000, socketTimeoutMS=60000)
     coleccion = cliente_mongodb['tfm-master-uam']['materias-master']
 
-    embedded_query = get_embedding(query)
+    embedded_query = obtener_embedding(query)
 
     pipeline = [
         {
