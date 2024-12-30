@@ -8,7 +8,8 @@ from python.llm_connection.search_engine import llm_chat_engine
 
 APP_TITLE = "Asistente virtual"
 APP_ICON = "🤖"
-MODELOS = ['llama-3.1-8b-instant', 'gemma2-9b-it', 'llama-3.3-70b-versatile']
+MODELOS = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant',
+           'mixtral-8x7b-32768']
 
 
 def get_messages() -> None:
