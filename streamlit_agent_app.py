@@ -20,9 +20,8 @@ def obtener_mensajes() -> None:
         st.session_state.messages = [
             {
                 "role": "assistant",
-                "content": """Te puedo ayudar con cualquier duda relacionada
-                con las materias del máster en [Big Data y Ciencia de Datos.]
-                (https://www.masteruambigdata.com/)"""
+                "content": """Hola humano, te puedo ayudar con cualquier duda
+                relacionada con las materias del máster."""
             }
         ]
     return st.session_state.messages
