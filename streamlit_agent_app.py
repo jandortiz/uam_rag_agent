@@ -6,8 +6,8 @@ import streamlit as st
 from python.llm_connection.search_engine import llm_chat_engine
 
 
-APP_TITLE = "Asistente virtual"
-APP_ICON = "🤖"
+TITULO_APP = "Asistente virtual"
+ICONO_APP = "🤖"
 MODELOS = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant',
            'mixtral-8x7b-32768']
 
@@ -32,11 +32,11 @@ async def main():
     """Crea la lógica del front.
 
     """
-    st.set_page_config(page_title=APP_TITLE, page_icon=APP_ICON,
+    st.set_page_config(page_title=TITULO_APP, page_icon=ICONO_APP,
                        layout='centered', menu_items={})
 
     with st.sidebar:
-        st.header(f"{APP_ICON} {APP_TITLE} {APP_ICON}", divider='blue')
+        st.header(f"{ICONO_APP} {TITULO_APP} {ICONO_APP}", divider='blue')
         """Aplicación basada en un agente RAG, que sirve como guía de estudio y
         fuente de información para las materias relacionadas con el [máster en
         Big Data y Ciencia de Datos](https://www.masteruambigdata.com/) de la 
