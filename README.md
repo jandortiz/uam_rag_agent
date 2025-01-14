@@ -15,4 +15,8 @@ En esta primera versión, se responderán preguntas relacionadas con las materia
 
 Este proyecto se realiza como requisito para optar al título de máster en BigData y ciencia de datos.
 
+En el momento del desarrollo, se ha propuesto la siguiente arquitectura:
+
+<img src="imgs/rag_architecture.png" alt="Arquitectura proyecto"/>
+
 Para ensayar la app, visite el siguiente <a href="https://uamragagent.streamlit.app/" target="_blank">link.</a>
