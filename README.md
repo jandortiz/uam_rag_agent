@@ -17,6 +17,6 @@ Este proyecto se realiza como requisito para optar al título de máster en BigD
 
 En el momento del desarrollo, se ha propuesto la siguiente arquitectura:
 
-<img src="https://imagenes-proyecto-tfm.s3.eu-central-1.amazonaws.com/diagramas/rag_architecture.png" alt="Arquitectura proyecto"/>
+<img src="https://imagenes-proyecto-tfm.s3.eu-central-1.amazonaws.com/diagramas/ia_stack.png" alt="Arquitectura proyecto"/>
 
 Para ensayar la app, visite el siguiente <a href="https://uamragagent.streamlit.app/" target="_blank">link.</a>
