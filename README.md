@@ -13,6 +13,6 @@ En esta primera versión, se responderán preguntas relacionadas con las materia
 7. Fuentes de datos y aprovisionamiento.
 8. Bases de datos NoSQL.
 
-Este proyecto se realiza como requisito para obpar al título de máster en BigData y ciencia de datos.
+Este proyecto se realiza como requisito para optar al título de máster en BigData y ciencia de datos.
 
 Para ensayar la app, visite el siguiente <a href="https://uamragagent.streamlit.app/" target="_blank">link.</a>
