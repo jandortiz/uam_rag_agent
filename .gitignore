@@ -177,3 +177,4 @@ metadata/
 storage/
 __init__.py
 .streamlit
+imgs/
